@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michal Skurnik — Game Designer & Product Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FDF6EC;
+  --dark:#1A1A1A;
+  --green:#2D6A4F;
+  --green-light:#74C69D;
+  --yellow:#F4A261;
+  --pink:#FFD6E0;
+  --gray:#6B7280;
+  --border:#E5E7EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,246,236,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.nav-logo span{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:14px;color:var(--gray);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--green)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:0;padding-top:64px}
+.hero-text{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 6rem}
+.hero-eyebrow{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);font-weight:500;margin-bottom:1.5rem}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,4vw,3.8rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem}
+.hero-title em{font-style:normal;color:var(--green)}
+.hero-quote{font-size:15px;color:var(--gray);max-width:420px;margin-bottom:2.5rem;border-left:3px solid var(--yellow);padding-left:1rem;font-style:italic}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500;transition:background 0.2s}
+.btn-primary:hover{background:#1B4332}
+.btn-secondary{border:1.5px solid var(--dark);color:var(--dark);padding:12px 28px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500;transition:all 0.2s}
+.btn-secondary:hover{background:var(--dark);color:#fff}
+.hero-image{position:relative;overflow:hidden;background:linear-gradient(135deg,#A8D5BA 0%,#74C69D 50%,#52B788 100%)}
+.hero-image img{width:100%;height:100%;object-fit:cover;object-position:top}
+.hero-tag{position:absolute;bottom:2rem;left:2rem;background:rgba(253,246,236,0.95);padding:10px 16px;border-radius:8px;font-size:12px;font-weight:500;color:var(--green)}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:0.75rem}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem}
+
+/* ABOUT */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-image{border-radius:16px;overflow:hidden;aspect-ratio:3/4}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-text p{color:var(--gray);margin-bottom:1rem;font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
+.tag{background:var(--cream);border:1px solid var(--border);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--dark);font-weight:500}
+
+/* SERVICES */
+#services{background:var(--dark)}
+#services .section-label{color:var(--green-light)}
+#services .section-title{color:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.service-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:2rem}
+.service-icon{font-size:2rem;margin-bottom:1rem}
+.service-card h3{font-family:'Syne',sans-serif;font-size:1.1rem;color:#fff;margin-bottom:0.75rem;font-weight:700}
+.service-card p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7}
+
+/* PROJECTS */
+#projects{background:var(--cream)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.project-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:transform 0.2s,box-shadow 0.2s}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+.project-card.featured{grid-column:span 2}
+.project-img{aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#A8D5BA,#74C69D)}
+.project-card.featured .project-img{aspect-ratio:21/9}
+.project-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.project-card:hover .project-img img{transform:scale(1.04)}
+.project-body{padding:1.5rem}
+.project-type{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:0.5rem}
+.project-body h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:0.5rem}
+.project-body p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:1rem}
+.project-link{font-size:13px;color:var(--green);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:4px}
+.project-link:hover{text-decoration:underline}
+.project-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem}
+
+/* BLOG */
+#blog{background:#fff}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.blog-card{border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color 0.2s}
+.blog-card:hover{border-color:var(--green)}
+.blog-tag{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);font-weight:600;margin-bottom:0.75rem}
+.blog-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;line-height:1.4;margin-bottom:0.75rem}
+.blog-card p{font-size:13px;color:var(--gray);line-height:1.6}
+
+/* CONTACT */
+#contact{background:var(--green);text-align:center;padding:6rem 2rem}
+#contact .section-label{color:var(--green-light)}
+#contact .section-title{color:#fff;max-width:600px;margin:0 auto 1rem}
+#contact p{color:rgba(255,255,255,0.75);margin-bottom:2.5rem;font-size:15px}
+.contact-email{display:inline-block;background:#fff;color:var(--green);padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;transition:transform 0.2s}
+.contact-email:hover{transform:translateY(-2px)}
+.contact-rate{margin-top:1.5rem;font-size:13px;color:rgba(255,255,255,0.6)}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,0.4);text-align:center;padding:2rem;font-size:13px}
+footer a{color:rgba(255,255,255,0.6);text-decoration:none;margin:0 0.75rem}
+footer a:hover{color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-text{padding:3rem 1.5rem 2rem}
+  .hero-image{height:50vw}
+  .about-grid,.services-grid,.projects-grid,.blog-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-column:span 1}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="images/logo.jpg" alt="Miichal Games & Consulting">
+      <span>MICHAL SKURNIK</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#blog">Articles</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Game Designer & Product Consultant</div>
+    <h1 class="hero-title">Where <em>play</em> meets purpose</h1>
+    <p class="hero-quote">"Fantasy is a necessary ingredient in living — it's a way of looking at life through the wrong end of a telescope." — Dr. Seuss</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">See my work</a>
+      <a href="#contact" class="btn-secondary">Let's talk</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="images/hero.jpg" alt="Michal Skurnik — Game Designer">
+    <div class="hero-tag">🎮 15+ years in games & interactive experiences</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="images/about.jpg" alt="Michal at work">
+      </div>
+      <div class="about-text">
+        <div class="section-label">About me</div>
+        <h2 class="section-title">I design games that make the unforgettable feel obvious</h2>
+        <p>I'm a game designer and product consultant specializing in interactive and experiential game design — across digital apps, physical play, and everything in between.</p>
+        <p>My career spans 15+ years across mobile game studios, edtech, e-commerce, and independent development. I've shipped products for kids, built a 6-figure experiential game business from scratch, and launched two mobile apps solo on the App Store and Google Play.</p>
+        <p>In 2019 I founded <strong>Food Games</strong> — a gamified cooking workshop company that turned the kitchen into a competitive, joyful arena for corporate teams and schools. I bring the same energy to every project: hands-on experience, cross-disciplinary thinking, and a deep belief that the best ideas live at the edge of what's expected.</p>
+        <div class="tags">
+          <span class="tag">Mobile Games</span>
+          <span class="tag">IAP & Monetization</span>
+          <span class="tag">Puzzle & Casual</span>
+          <span class="tag">Gamification</span>
+          <span class="tag">Kids & EdTech</span>
+          <span class="tag">Live Ops</span>
+          <span class="tag">UX Design</span>
+          <span class="tag">Indie Dev</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">What I offer</div>
+    <h2 class="section-title">Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎮</div>
+        <h3>Game Design & Concept</h3>
+        <p>From core loop to full GDD — I write clear, buildable game specs for mobile and casual games, with a focus on player retention and monetization hooks.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>Product Consulting</h3>
+        <p>Monetization strategy, feature prioritization, and live ops planning. I help studios and indie devs make smarter product decisions grounded in player behavior.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌱</div>
+        <h3>Experiential & Serious Games</h3>
+        <p>Physical/digital hybrid experiences, edtech gamification, and corporate workshops. I specialize in turning non-game contexts into deeply engaging play.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Selected work</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <!-- Succulent Zen -->
+      <div class="project-card featured">
+        <div class="project-img" style="background:linear-gradient(135deg,#2D6A4F,#52B788)">
+          <div class="project-placeholder">🌵</div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Mobile Puzzle Game · iOS & Android</div>
+          <h3>Succulent Zen</h3>
+          <p>A calming memory-matching puzzle game featuring hand-illustrated succulents. Built solo end-to-end — concept, design, development, and publishing on App Store and Google Play. Integrates AdMob, ATT, and progressive difficulty across 4 levels.</p>
+          <a href="https://succulent-zen.vercel.app" target="_blank" class="project-link">Play the game →</a>
+        </div>
+      </div>
+
+      <!-- Chef Green -->
+      <div class="project-card">
+        <div class="project-img" style="background:linear-gradient(135deg,#52B788,#95D5B2)">
+          <div class="project-placeholder">👨‍🍳</div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Children's App · iOS · Freemium + IAP</div>
+          <h3>Chef Green App</h3>
+          <p>An interactive Hebrew cooking adventure app for children ages 6–10. Features 4 mini-games per recipe, freemium model with IAP packages, and a certificate reward system. Built with Capacitor + vanilla JS.</p>
+          <a href="https://chef-green-app.vercel.app" target="_blank" class="project-link">Try the app →</a>
+        </div>
+      </div>
+
+      <!-- Food Games -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="images/food-games.jpg" alt="Food Games">
+        </div>
+        <div class="project-body">
+          <div class="project-type">Experiential Game Business · Founded 2019</div>
+          <h3>Food Games</h3>
+          <p>A deck-building inspired culinary team-building company I founded and scaled to 6-figure annual revenue, serving 1000+ participants from companies including Amazon, Riskified, and Weizmann Institute.</p>
+        </div>
+      </div>
+
+      <!-- Pic-a-Cake -->
+      <div class="project-card">
+        <div class="project-img" style="background:linear-gradient(135deg,#FFD6E0,#F4A261)">
+          <div class="project-placeholder">🎂</div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Mobile E-Commerce · Co-Founder · 2016–2019</div>
+          <h3>Pic-a-Cake</h3>
+          <p>A gamified mobile platform for customizing and ordering printed cakes. Designed the full UX flow, game mechanics, and user journey from creative play to real-world delivery — accessible to users aged 5+.</p>
+        </div>
+      </div>
+
+      <!-- Dino Go -->
+      <div class="project-card">
+        <div class="project-img" style="background:linear-gradient(135deg,#95D5B2,#52B788)">
+          <div class="project-placeholder">🦕</div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Mobile Game · WhaleApps · 2017–2018</div>
+          <h3>Dino Go</h3>
+          <p>Pokémon GO-inspired AR mobile game featuring friendly dinosaur characters. Defined feature specs, PRDs, and game mechanics for both Dino Go and Foot Pool at WhaleApps, managing remote dev and art teams.</p>
+        </div>
+      </div>
+
+      <!-- Levinsky Tour -->
+      <div class="project-card">
+        <div class="project-img" style="background:linear-gradient(135deg,#F4A261,#E76F51)">
+          <div class="project-placeholder">🗺️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Location-Based Quest Game · Construct Engine</div>
+          <h3>Levinsky Tour</h3>
+          <p>A culinary quest app set in Tel Aviv's Levinsky Market. Players navigate historical and cultural landmarks through interactive riddles. Built the concept, UI design, and full game in Construct engine.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container">
+    <div class="section-label">Thinking out loud</div>
+    <h2 class="section-title">Articles</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-tag">Gamification · Workplace</div>
+        <h3>Food Games: Turning the Office into a Culinary Sandbox</h3>
+        <p>How we used deck-building mechanics and competitive cooking to unlock creativity, collaboration, and genuine fun in corporate teams.</p>
+      </div>
+      <div class="blog-card">
+        <div class="blog-tag">Game Design · Large Scale</div>
+        <h3>How to Turn a Military Base into a Massive Game</h3>
+        <p>Designing a live, large-scale experiential game for hundreds of players — what works, what breaks, and what you can't plan for.</p>
+      </div>
+      <div class="blog-card">
+        <div class="blog-tag">EdTech · Gamification</div>
+        <h3>Experiential Learning Through Gamification in the Kitchen</h3>
+        <p>Exploring how game mechanics — progression, stakes, feedback loops — can transform cooking education into something children remember.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Let's build something worth playing</h2>
+    <p>Open to consulting, short-term engagements, and game design collaborations worldwide.</p>
+    <a href="mailto:michalskurnik@gmail.com" class="contact-email">michalskurnik@gmail.com</a>
+    <div class="contact-rate">Daily rate available on request · Available August–September 2026</div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://www.linkedin.com/in/michalskurnik" target="_blank">LinkedIn</a>
+    <a href="https://chef-green-app.vercel.app" target="_blank">Chef Green App</a>
+    <a href="https://succulent-zen.vercel.app" target="_blank">Succulent Zen</a>
+  </p>
+  <p style="margin-top:1rem">© 2026 Michal Skurnik · Game Designer & Product Consultant</p>
+</footer>
+
+</body>
+</html>
